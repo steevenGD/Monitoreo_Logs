@@ -1,28 +1,3 @@
-# Archivos de compilación
-*.o
-*.out
-*.exe
-*.log
 
-# Ejecutables generados
-servidor
-agente
-prueba_stress
-
-# Archivos del sistema
-.DS_Store
-Thumbs.db
-
-# Makefile backups (si se usan editores que crean copias)
-*~ 
-*.bak
-
-# Archivos temporales de editores
-*.swp
-*.tmp
-*.swo
-
-# Archivos generados por el sistema operativo
-.idea/
-.vscode/
-*.pid
+.vscode/tasks.json
+.env

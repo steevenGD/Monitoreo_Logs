@@ -1,20 +1,36 @@
 # Variables
 CC = gcc
-CFLAGS = -Wall
-TARGETS = Server Agente Prueba
+CFLAGS = -Wall -Wextra -g
+AGENTE = agente
+SERVIDOR = servidor
+PRUEBA = prueba_stress 
+# Regla por defecto
+all: $(AGENTE) $(SERVIDOR) $(PRUEBA) 
 
-# Reglas
-all: $(TARGETS)
+# Compilar el agente
+$(AGENTE): agente.o
+	$(CC) $(CFLAGS) -o $(AGENTE) agente.o
 
-server: server.c
-	$(CC) $(CFLAGS) Server.c -o Server
+# Compilar el servidor
+$(SERVIDOR): servidor.o
+	$(CC) $(CFLAGS) -o $(SERVIDOR) servidor.o
 
-agente: agente.c
-	$(CC) $(CFLAGS) Agente.c -o Agente
+# Compilar el ejecutable de hydra
+$(PRUEBA): prueba_stress.o
+	$(CC) $(CFLAGS) -o $(PRUEBA) prueba_stress.o
 
-prueba_stress: prueba_stress.c
-	$(CC) $(CFLAGS) Prueba.c -o Prueba
+# Regla para compilar el agente objeto
+agente.o: agente.c
+	$(CC) $(CFLAGS) -c agente.c
 
+# Regla para compilar el servidor objeto
+servidor.o: servidor.c
+	$(CC) $(CFLAGS) -c servidor.c
+
+# Regla para compilar el ejecutable de hydra objeto
+prueba_stress.o: prueba_stress.c
+	$(CC) $(CFLAGS) -c prueba_stress.c
+
+# Limpiar archivos generados
 clean:
-	rm -f $(TARGETS)
-
+	rm -f $(AGENTE) $(SERVIDOR) $(PRUEBA) *.o
