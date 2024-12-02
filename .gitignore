@@ -1,3 +1,21 @@
+# Archivos de compilación
+*.o
+*.out
+*.exe
+*.log
+
+# Ejecutables generados
+servidor
+agente
+prueba_stress
+
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+
+# Makefile backups (si se usan editores que crean copias)
+*~ 
+*.bak
 
 .vscode/tasks.json
 .env
